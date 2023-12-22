@@ -7,8 +7,8 @@ app.use(express.json());
 
 
 let tasks = [
-    {"id": 1 , "titel": "Einkaufsliste", "autor": "Barbara Baerfuss", "erstellungsdatum": null,"erfüllungsdatum": null },
-    {"id": 2 , "titel": "Aufgaben", "autor": "Max Muster", "erstellungsdatum": "","erfüllungsdatum": "" }
+    {"id" : 1, "titel" : "Einkaufsliste", "autor" : "Barbara Baerfuss", "erstellungsdatum" : "22.12.2023", "erfüllungsdatum" : null },
+    {"id" : 2, "titel" : "Aufgaben", "autor" : "Max Muster", "erstellungsdatum" : "22.12.2023", "erfüllungsdatum" : null}
 ];
 
 // Endpunkte
