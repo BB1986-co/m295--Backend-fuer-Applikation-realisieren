@@ -1,3 +1,13 @@
+const express = require('express');
+const { userInfo } = require('os');
+const app = express();
+const endpoints = require('./endpoints');
+app.use(express.json());
+app.use('/login', endpoints);
+app.use('/verify',endpoints);
+app.use('/logout', endpoints);
+
+
 // Login
 
 app.post('/login/:email&:password', function (request, response) {

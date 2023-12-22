@@ -2,28 +2,28 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-//externe endpunkte
-const login = require('./login');
-app.use('/login', login);
-
-const verify = require('./verify');
-app.use('/verify',verify);
-
-const logout = require('./logout');
-const { json } = require('stream/consumers');
-app.use('/logout', logout);
-
 // Json middleware Zugriff
 app.use(express.json());
 
+//externe endpunkte
+const router = express.Router();
+router.get('/', (req, res) => {
+  res.send('login home page')
+})
+router.get('/about', (req, res) => {
+  res.send('About login')
+})
 
+module.exports = router
+
+// json mit Daten
 let tasks = [
-    {"id" : 1, "titel" : "Einkaufsliste", "autor" : "Barbara Baerfuss", "erstellungsdatum" : "22.12.2023", "erfüllungsdatum" : null },
-    {"id" : 2, "titel" : "Aufgaben", "autor" : "Max Muster", "erstellungsdatum" : "22.12.2023", "erfüllungsdatum" : null}
+    {id : 1, titel : "Einkaufsliste", autor : "Barbara Baerfuss", erstellungsdatum : Date(), erfüllungsdatum : null },
+    {id : 2, titel : "Aufgaben", autor : "Max Muster", erstellungsdatum : Date(), erfüllungsdatum : null}
 ];
 
 // Endpunkte
-try {
+
     app.get('/tasks', (request, response) => {
         response.status(200).send(tasks);
     });
@@ -46,8 +46,7 @@ try {
             response.status(404).send("id nicht vorhanden!");
         }else{
             response.status(200).send(tasks.filter((task) => task.id === request.params.id));
-        }
-        
+        }   
     });
     
     app.patch('/tasks/:id', (request, response) => {
@@ -71,10 +70,6 @@ try {
         } 
     })
     
-} catch (response) {
-    response.status(500);
-}
-
 app.listen(port, ()=>{
     console.log(`server runs on port: 3000 ${port}`);
 });
