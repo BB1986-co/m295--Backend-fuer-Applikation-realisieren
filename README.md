@@ -13,7 +13,14 @@ Erste Schritte:
 7. Server verbindung auf Port 3000 erstellen und Testen.
 
 
-Dokumentation:
+# Dokumentation:
+
+Die Dokumention ist im Ordner dosc als documentation.md abgelegt.
+
+
+# Testing:
+
+
 
 
 

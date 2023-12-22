@@ -4,13 +4,12 @@ const app = express();
 const endpoints = require('./endpoints');
 app.use(express.json());
 app.use('/login', endpoints);
-app.use('/verify',endpoints);
-app.use('/logout', endpoints);
+
 
 
 // Login
 
-app.post('/login/:email&:password', function (request, response) {
+app.post('/login/:{email}&{password}', function (request, response) {
 	const { email, password } = request.body
 
 	// Check the credentials against store
@@ -20,7 +19,7 @@ app.post('/login/:email&:password', function (request, response) {
 
 		return response.status(200).json({ email: request.session.email })
 	}
-  return response.status(401).json({ error: "Invalid credentials" })
+  return response.status(401).json({ error: "E-Mail oder Passwort ist falsch" })
 });
 
 app.get('/verify', function (request, response) {
