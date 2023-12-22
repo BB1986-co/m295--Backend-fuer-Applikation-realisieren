@@ -31,7 +31,7 @@ Login:
 
 # Dokumentation:
 
-Die Dokumention ist im Ordner dosc als documentation.md abgelegt.
+Die Dokumention ist im Ordner docs als documentation.md abgelegt.
 
 
 # Testing:
